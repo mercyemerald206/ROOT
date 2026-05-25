@@ -1,0 +1,55 @@
+version: "3.9"
+
+services:
+
+  # ⚡ AI CIRCUIT FAULT DIAGNOSIS SYSTEM
+  fault-diagnosis:
+    build:
+      context: ./fault-diagnosis
+      dockerfile: Dockerfile
+    container_name: fault-diagnosis
+    ports:
+      - "8001:8000"
+    environment:
+      - SERVICE_NAME=circuit-fault-diagnosis
+      - MODEL_TYPE=anomaly_detection
+      - LOG_LEVEL=info
+    restart: unless-stopped
+    networks:
+      - electrical-ai-network
+
+  # ⚡ SMART GRID TRADE-OFF SIMULATOR
+  grid-simulator:
+    build:
+      context: ./grid-simulator
+      dockerfile: Dockerfile
+    container_name: grid-simulator
+    ports:
+      - "8002:8000"
+    environment:
+      - SERVICE_NAME=smart-grid-simulation
+      - OPTIMIZATION_MODE=cost_reliability_efficiency
+      - LOG_LEVEL=info
+    restart: unless-stopped
+    networks:
+      - electrical-ai-network
+
+  # 🏭 PREDICTIVE MAINTENANCE SYSTEM
+  predictive-maintenance:
+    build:
+      context: ./predictive-maintenance
+      dockerfile: Dockerfile
+    container_name: predictive-maintenance
+    ports:
+      - "8003:8000"
+    environment:
+      - SERVICE_NAME=equipment-failure-prediction
+      - MODEL_TYPE=time_series_forecasting
+      - LOG_LEVEL=info
+    restart: unless-stopped
+    networks:
+      - electrical-ai-network
+
+networks:
+  electrical-ai-network:
+    driver: bridge
