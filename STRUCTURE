@@ -1,0 +1,20 @@
+electrical-ai-platform/
+│
+├── docker-compose.yml   ← ROOT LEVEL
+│
+├── fault-diagnosis/
+│   ├── Dockerfile
+│   ├── main.py
+│   ├── model.pkl (or ML logic)
+│   └── requirements.txt
+│
+├── grid-simulator/
+│   ├── Dockerfile
+│   ├── main.py
+│   └── requirements.txt
+│
+├── predictive-maintenance/
+│   ├── Dockerfile
+│   ├── main.py
+│   ├── model.pkl / forecasting logic
+│   └── requirements.txt
